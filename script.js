@@ -1,10 +1,11 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];  // Cart uses localStorage
-let products = [
-    { name: 'Lash Slick', description: 'Film form mascara', price: 100, image: 'images\glossier-makeup-lashslick-black-01.avif' },
-    { name: 'Lip Line', description: 'Enhancing pencil', price: 90, image: 'images\glossier-carousel-lipline-hold-01.avif' },
-    { name: 'Cloud Paint Blush', description: 'Seamless cheek color', price: 90, image: 'images\glossier-cloud-paint-soar-carousel-01.avif' },
-    { name: 'Monochromes', description: 'Essential eyeshadow trio', price: 110, image: 'images\glossier-cloud-paint-soar-carousel-01.avif' }
 
+// Global product list including initial products
+let products = [
+    { name: 'Lash Slick', description: 'Film form mascara', price: 100, image: 'images/glossier-makeup-lashslick-black-01.avif' },
+    { name: 'Lip Line', description: 'Enhancing pencil', price: 90, image: 'images/glossier-carousel-lipline-hold-01.avif' },
+    { name: 'Cloud Paint Blush', description: 'Seamless cheek color', price: 90, image: 'images/glossier-cloud-paint-soar-carousel-01.avif' },
+    { name: 'Monochromes', description: 'Essential eyeshadow trio', price: 110, image: 'images/glossier-cloud-paint-soar-carousel-01.avif' }
 ];
 
 // Customer: Add to cart
@@ -102,8 +103,10 @@ function addProduct() {
     const productImage = document.getElementById('productImage').value;  // Get the image URL from the form
 
     if (productName && productDescription && productImage && !isNaN(productPrice) && productPrice > 0) {
-        products.push({ name: productName, description: productDescription, price: productPrice, image: productImage });
+        const newProduct = { name: productName, description: productDescription, price: productPrice, image: productImage };
+        products.push(newProduct);  // Add to global products array
         updateProductList();  // Refresh the product list display
+        displayProducts();  // Refresh the displayed products
         alert(productName + ' has been added.');
     } else {
         alert('Invalid product details.');
@@ -122,8 +125,38 @@ function updateProductList() {
     });
 }
 
+// Display all products in the "Our Products" section
+function displayProducts() {
+    const productContentElement = document.getElementById('productContent');
+    productContentElement.innerHTML = '';  // Clear existing product cards
+
+    products.forEach(function(product) {
+        const productHTML = '<div class="product-card">'
+            + '<img src="' + product.image + '" alt="' + product.name + '">'
+            + '<h3>' + product.name + '</h3>'
+            + '<p>' + product.description + '</p>'
+            + '<p>Price: ' + product.price + '</p>'
+            + '<button onclick="addToCart(\'' + product.name + '\', ' + product.price + ')">Add to Cart</button>'
+            + '</div>';
+        productContentElement.innerHTML += productHTML; // Add each product card to the section
+    });
+}
+
 // Admin: Remove a product from the list
 function removeProduct(index) {
     products.splice(index, 1);  // Remove the product at the specified index
     updateProductList();  // Refresh the product list display
+    displayProducts();  // Refresh the displayed products
 }
+
+// Initial display of products on page load
+function init() {
+    displayProducts();
+    updateProductList();
+}
+
+// Call init on page load
+window.onload = function() {
+    updateCartDisplay();
+    init();  // Initialize product display
+};
