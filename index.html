@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Online Shopping System</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="updateCartDisplay(); updateProductList();">
+
+<header>
+    <a href="#" class="logo">DigiShop</a>
+    <nav class="navigation">
+        <a href="#products">Products</a>
+        <a href="#cart">Cart</a>
+        <a href="#admin">Admin</a>  <!-- Admin section is on the same page -->
+    </nav>
+    <div id="cartSummary">Items: 0 | Total: 0</div>  <!-- Cart Summary -->
+</header>
+
+<!-- Main Content -->
+<section class="main">
+    <div>
+        <h2>Welcome to DigiShop!</h2>
+        <br>
+        <p> Your one-stop destination for all your beauty needs. At our Makeup Shop, we believe that beauty is for everyone. We are passionate about helping you enhance your natural beauty with our carefully curated selection of high-quality makeup products. Whether you're a makeup novice or a seasoned pro, we have everything you need to create stunning looks for any occasion. Founded by two beauty enthusiasts, <b>Jumanah</b> and <b>Lena</b>, our shop aims to provide you with the best shopping experience. We are dedicated to bringing you the latest trends, timeless classics, and innovative products that cater to every skin tone and type. Explore our collection and find your new favorite products today! Join our beauty community and discover tips, tutorials, and inspiration to help you express yourself through makeup. We're excited to share our love for beauty with you! Browse our products below and add them to your cart.</p>
+    </div>
+</section>
+
+<!-- Products Section -->
+<section class="products" id="products">
+    <h2 class="title">Our Products</h2>
+    <div class="content" id="productContent">
+        <div class="product-card">
+            <img src="images\glossier-makeup-lashslick-black-01.avif" alt="Lash Slick">
+            <h3>Lash Slick</h3>
+            <p>Film form mascara</p>
+            <p>Price: 100 SAR</p>
+            <button onclick="addToCart('Lash Slick', 100)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images\glossier-carousel-lipline-hold-01.avif" alt="Lip Line">
+            <h3>Lip Line</h3>
+            <p>Enhancing pencil</p>
+            <p>Price: 90 SAR</p>
+            <button onclick="addToCart('Lip Line', 90 )">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images\glossier-cloud-paint-soar-carousel-01.avif" alt="Cloud Paint Blush">
+            <h3>Cloud Paint Blush</h3>
+            <p>Seamless cheek color</p>
+            <p>Price: 110 SAR</p>
+            <button onclick="addToCart('Cloud Paint Blush', 110)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+            <img src="images\glossier-monochromes-clay-carousel-01.avif" alt="Lash Slick">
+            <h3>Monochromes</h3>
+            <p>Essential eyeshadow trio</p>
+            <p>Price: 110 SAR</p>
+            <button onclick="addToCart('Monochromes', 110)">Add to Cart</button>
+        </div>
+       
+        
+    </div>
+</section>
+
+<!-- Cart Section -->
+<section class="cart" id="cart">
+    <h2 class="title">Shopping Cart</h2>
+    <div id="cartDetails">
+        <p>No items in your cart.</p>
+    </div>
+    <button onclick="checkout()">Checkout</button>
+</section>
+
+<!-- Admin Section -->
+<section class="admin" id="admin">
+    <h2 class="title">Admin Panel</h2>
+    <form id="adminForm">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" required>
+        <label for="productDescription">Product Description:</label>
+        <input type="text" id="productDescription" required>
+        <label for="productPrice">Price:</label>
+        <input type="number" id="productPrice" required>
+        <label for="productImage">Product Image URL:</label>
+        <input type="text" id="productImage" required>
+        <button type="button" onclick="addProduct()">Add Product</button>
+    </form>
+    <div id="adminProductList">
+        <h3>Product List</h3>
+        <ul id="productList"></ul>  <!-- Product list for admin -->
+    </div>
+</section>
+
+<footer class="footer">
+    <p class="footer-title">© 2024 DigiShop | All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>  <!-- Link to the JavaScript file -->
+</body>
+</html>
