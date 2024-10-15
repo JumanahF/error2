@@ -2,10 +2,10 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];  // Cart uses localSt
 
 // Global product list including initial products
 let products = [
-    { name: 'Lash Slick', description: 'Film form mascara', price: 100, image: 'images/glossier-makeup-lashslick-black-01.avif' },
-    { name: 'Lip Line', description: 'Enhancing pencil', price: 90, image: 'images/glossier-carousel-lipline-hold-01.avif' },
-    { name: 'Cloud Paint Blush', description: 'Seamless cheek color', price: 90, image: 'images/glossier-cloud-paint-soar-carousel-01.avif' },
-    { name: 'Monochromes', description: 'Essential eyeshadow trio', price: 110, image: 'images/glossier-cloud-paint-soar-carousel-01.avif' }
+    { name: 'Lash Slick', description: 'Film form mascara', price: 100, image: 'glossier-makeup-lashslick-black-01.avif' },
+    { name: 'Lip Line', description: 'Enhancing pencil', price: 90, image: 'glossier-carousel-lipline-hold-01.avif' },
+    { name: 'Cloud Paint Blush', description: 'Seamless cheek color', price: 90, image: 'glossier-cloud-paint-soar-carousel-01.avif' },
+    { name: 'Monochromes', description: 'Essential eyeshadow trio', price: 110, image: 'glossier-cloud-paint-soar-carousel-01.avif' }
 ];
 
 // Customer: Add to cart
